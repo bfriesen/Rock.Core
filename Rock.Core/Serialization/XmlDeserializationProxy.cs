@@ -192,7 +192,7 @@ namespace Rock.Serialization
         /// </remarks>
         public XmlDeserializationProxy(Type defaultType)
         {
-            if (defaultType == null && !typeof(TTarget).IsAbstract)
+            if (defaultType == null && !typeof(TTarget).GetTypeInfo().IsAbstract)
             {
                 _defaultType = typeof(TTarget);
             }
@@ -469,7 +469,7 @@ namespace Rock.Serialization
                     }
                     else
                     {
-                        if (type.IsInterface || type.IsAbstract)
+                        if (type.GetTypeInfo().IsInterface || type.GetTypeInfo().IsAbstract)
                         {
                             value = null;
                             return false;

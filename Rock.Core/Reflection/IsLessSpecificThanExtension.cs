@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Rock.Reflection
 {
@@ -6,7 +7,7 @@ namespace Rock.Reflection
     {
         public static bool IsLessSpecificThan(this Type thisType, Type comparisonType)
         {
-            return thisType != comparisonType && thisType.IsAssignableFrom(comparisonType);
+            return thisType != comparisonType && thisType.GetTypeInfo().IsAssignableFrom(comparisonType);
         }
     }
 }
